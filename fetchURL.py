@@ -1,12 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 
-def get_ingredients(url):
-	page = BeautifulSoup(requests.get(url))
-	ingredients = []
-	for ingredient in soup.find_all(itemprop="ingredients"):
-		ingredients.append(ingredient.get_text())
-	return ingredients
-
-def get_direction(url):
-	pass #TODO
+class Recipe:
+	def __init__(self, url):
+		self.page = BeautifulSoup(requests.get(url).content, 'html.parser')
+		self.ingredients = [ingredient.get_text() for ingredient in soup.find_all(itemprop="ingredients")]
+		self.directions = [direction.get_text() for direction in soup.find_all(class_="recipe-directions__list--item")]
+		self.tools = []
+		self.methods = []
