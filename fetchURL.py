@@ -6,6 +6,7 @@ def get_ingredients(url):
 	ingredients = []
 	for ingredient in soup.find_all(itemprop="ingredients"):
 		ingredients.append(ingredient.get_text())
+	return ingredients
 
 def get_direction(url):
-	pass //TODO
+	pass #TODO
