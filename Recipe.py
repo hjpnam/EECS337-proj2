@@ -9,4 +9,3 @@ class Recipe:
 		self.directions = [direction.get_text() for direction in self.page.find_all(class_="recipe-directions__list--item")]
 		self.tools = []
 		self.methods = []
-		
