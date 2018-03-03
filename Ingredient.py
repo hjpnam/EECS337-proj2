@@ -1,9 +1,6 @@
 import nltk
 from nltk.tokenize import word_tokenize
 
-measurements = ['cup', 'cups', 'gram', 'grams', 'kilogram', 'kilograms', 'liter', 'liters', 'pound', 'pounds', 'milliliter', 'milliliters', 'ounce', 'ounces', 'pint', 'pints', 'teaspoon', 'teaspoons', 'tablespoon', 'tablespoons', 'teaspoons', 'pinch', 'fillet', 'fillets', 'clove', 'cloves']
-descriptors = ['skinless', 'boneless', 'dried', 'shredded', 'extra-virgin', 'freshly']
-
 class Ingredient:
 
     def __init__(self, string):
