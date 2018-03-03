@@ -30,11 +30,11 @@ class Recipe:
 							spot += 1
 						if (len(tool)>0): nouns.append(tool)
 		return nouns
-	
+
 	def toVegetarian(self, vegOption):
 		vegetarian_options = ['seitan','lentil','tofu','mushroom']
 		if vegOption.lower() not in vegetarian_options:
 			return False
 		for i in range(len(self.foodlist)):
-			if(self.foodlist[i].lower() in ['pork','beef','chicken','venison','lamb']:
+			if(self.foodlist[i].lower() in ['pork','beef','chicken','venison','lamb']):
 				self.foodlist[i].data['name'] = vegOption
