@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import nltk
-from Food import Food
+from Ingredient import Ingredient
 
 class Recipe:
 	def __init__(self, url):
