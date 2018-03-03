@@ -1,4 +1,4 @@
-# Database file for
+# Database file for vocabulary needed throughout the project.
 
 measurements = [
     'cups', 'cups',
@@ -23,7 +23,9 @@ measurements = [
     'drop', 'drops',
     'can', 'cans',
     'quart', 'quarts',
-    'gallon', 'gallons'
+    'gallon', 'gallons',
+    'package', 'packages',
+    'sprig', 'sprigs'
 ]
 
 vegetarian = [
@@ -50,5 +52,7 @@ descriptors = [
     'cold',
     'small',
     'medium',
-    'large'
+    'large',
+    'bone-in',
+    'whole'
 ]
