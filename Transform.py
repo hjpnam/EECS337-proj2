@@ -1,17 +1,18 @@
 from Vocabulary import *
 from Ingredient import Ingredient
+from Recipe import Recipe
 
 def toVegetarian(recipe, vegOption):
-	Recipe rec = recipe
+	rec = recipe
 	if vegOption.lower() not in vegetarian:
 		return False
 	for i in range(len(self.foodlist)):
 		if(rec.foodlist[i].getName().lower() in meat or rec.foodlist[i].getName().lower() in fish):
 			rec.foodlist[i].data['name'] = vegOption
 	return rec
-	
+
 def MakeIndian(recipe):
-	Recipe rec = recipe
+	rec = recipe
 	measurements = ["tablespoon", "tablespoons", "teaspoon", "teaspoons", "pinch"]
 	first = Ingredient("2 teaspoons ground cumin")
 	second = Ingredient("1/2 teaspoon ground cardamom")
