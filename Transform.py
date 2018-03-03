@@ -1,4 +1,5 @@
 from Vocabulary import *
+from Ingredient import Ingredient
 
 def toVegetarian(recipe, vegOption):
 	Recipe rec = recipe
