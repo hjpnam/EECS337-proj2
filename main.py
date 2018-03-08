@@ -8,7 +8,7 @@ def main():
 		recipe = Recipe(argv[1])
 		option = input("Enter 1 for Healthier, 2 for Indian, 3 for Vegetarian: ")
 		if option == 1:
-			pass
+			print (toHealthy(recipe))
 		elif option == 2:
 			print (MakeIndian(recipe))
 		elif option == 3:

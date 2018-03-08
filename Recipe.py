@@ -33,4 +33,12 @@ class Recipe:
 		return nouns
 		
 	def __str__(self):
-		pass #TODO
+		food_list_str = [str(food) for food in self.food_list]
+		print("Ingredients:")
+		for food in food_list_str:
+			print (food)
+		print("Follow these instructions food")
+		for direction in self.directions:
+			print (direction)
+		
+			
