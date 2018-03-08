@@ -294,9 +294,10 @@ healthy_substitutes = {
     "flour":"whole-wheat flour",
     "beef":"turkey",
     "iceberg lettuce":"dark leafy greens",
-    "ice cream":"greek yogurt",
+    "ice cream":"frozen fruit",
     "cream cheese":"low-fat cottage cheese",
     "cornstarch": "potato starch",
+    "butter": "coconut oil",
 # methods
     "boil":"steam",
     "deep-fry":"pan-fry"

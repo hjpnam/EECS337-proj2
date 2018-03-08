@@ -39,12 +39,30 @@ def toHealthy(recipe):
 	steps = recipe.directions
 	for i, step in enumerate(steps):
 		for ingredient in healthy_substitutes.keys():
-			if ingredient in step:
-				step = switch_ingredient(step, ingredient)
+			if ingredient in step.lower():
+				substitute = healthy_substitutes[ingredient]
+				step = step.replace(ingredient, substitute)
 				steps[i] = step
 	rec.directions = steps
 	return rec
 
-def switch_ingredient(step, ingredient):
-    substitute = healthy_substitutes[ingredient]
-    return step.replace(ingredient, substitute)
+def toUnhealthy(recipe):
+	rec = recipe
+	# replace in ingredients
+	for i in range(len(rec.food_list)):
+		for unhealthy, healthy in healthy_substitutes.iteritems():
+			if healthy in rec.food_list[i].getName().lower():
+				rec.food_list[i].data['name'] = unhealthy
+
+	# replace in steps
+	steps = recipe.directions
+	for i, step in enumerate(steps):
+		step_lower = step.lower()
+		for unhealthy, healthy in healthy_substitutes.iteritems():
+			if healthy in step_lower:
+				print healthy
+				print unhealthy
+				step_lower = step_lower.replace(healthy, unhealthy)
+				steps[i] = step_lower
+	rec.directions = steps
+	return rec
