@@ -274,3 +274,30 @@ other_methods = [
     'whip',
     'whisk'
 ]
+
+healthy_substitutes = {
+# ingredients
+    "rice":"quinoa",
+    "couscous":"quinoa",
+    "flour tortilla":"corn tortilla",
+    "stevia":"sugar",
+    "bread": "whole wheat bread",
+    "soda":"tonic water",
+    "french fries":"sweet potato fries",
+    "potato chips":"kale chips",
+    "sour cream":"greek yogurt",
+    "mayonaise":"mustard",
+    "croutons":"nuts",
+    "chocolate chips": "cacao nibs",
+    "peanut butter": "almond butter",
+    "milk":"almond milk",
+    "flour":"whole-wheat flour",
+    "beef":"turkey",
+    "iceberg lettuce":"dark leafy greens",
+    "ice cream":"greek yogurt",
+    "cream cheese":"low-fat cottage cheese",
+    "cornstarch": "potato starch",
+# methods
+    "boil":"steam",
+    "deep-fry":"pan-fry"
+}

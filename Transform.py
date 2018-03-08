@@ -6,9 +6,9 @@ def toVegetarian(recipe, vegOption):
 	rec = recipe
 	if vegOption.lower() not in vegetarian:
 		return False
-	for i in range(len(self.foodlist)):
-		if(rec.foodlist[i].getName().lower() in meat or rec.foodlist[i].getName().lower() in fish):
-			rec.foodlist[i].data['name'] = vegOption
+	for i in range(len(rec.food_list)):
+		if(rec.food_list[i].getName().lower() in meat or rec.food_list[i].getName().lower() in fish):
+			rec.food_list[i].data['name'] = vegOption
 	return rec
 
 def MakeIndian(recipe):
@@ -25,3 +25,26 @@ def MakeIndian(recipe):
 			rec.food_list.remove(ingredient)
 	rec.food_list.extend(indian_list)
 	return rec
+
+def toHealthy(recipe):
+	rec = recipe
+	# replace in ingredients
+	food_list = recipe.food_list
+	for i in range(len(rec.food_list)):
+		for ingredient in healthy_substitutes.keys():
+			if ingredient in rec.food_list[i].getName().lower():
+				rec.food_list[i].data['name'] = healthy_substitutes[ingredient]
+
+	# replace in steps
+	steps = recipe.directions
+	for i, step in enumerate(steps):
+		for ingredient in healthy_substitutes.keys():
+			if ingredient in step:
+				step = switch_ingredient(step, ingredient)
+				steps[i] = step
+	rec.directions = steps
+	return rec
+
+def switch_ingredient(step, ingredient):
+    substitute = healthy_substitutes[ingredient]
+    return step.replace(ingredient, substitute)
