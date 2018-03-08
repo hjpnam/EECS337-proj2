@@ -1,7 +1,7 @@
 # Database file for vocabulary needed throughout the project.
 
 measurements = [
-    'cups', 'cups',
+    'cup', 'cups',
     'gram', 'grams',
     'kilogram', 'kilograms',
     'liter', 'liters',
@@ -25,7 +25,8 @@ measurements = [
     'quart', 'quarts',
     'gallon', 'gallons',
     'package', 'packages',
-    'sprig', 'sprigs'
+    'sprig', 'sprigs',
+    'dash', 'dashes'
 ]
 
 vegetarian = ['seitan',
