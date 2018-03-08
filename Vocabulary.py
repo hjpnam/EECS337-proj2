@@ -6,7 +6,7 @@ measurements = [
     'kilogram', 'kilograms',
     'liter', 'liters',
     'pound', 'pounds',
-    'milliliters', 'milliliters',
+    'milliliter', 'milliliters',
     'ounce', 'ounces',
     'pint', 'pints',
     'teaspoon', 'teaspoons',
@@ -26,7 +26,8 @@ measurements = [
     'gallon', 'gallons',
     'package', 'packages',
     'sprig', 'sprigs',
-    'dash', 'dashes'
+    'dash', 'dashes',
+    'envelope', 'envelopes'
 ]
 
 vegetarian = ['seitan',
