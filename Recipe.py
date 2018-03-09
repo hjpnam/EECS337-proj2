@@ -11,6 +11,7 @@ class Recipe:
 		self.tools = []
 		self.methods = []
 		self.food_list = [Ingredient(i) for i in ingredients]
+		self.serving = self.page.find(id='metaRecipeServings').get('content')
 
 	def find_tools(self):
 		directions = self.directions
@@ -34,11 +35,13 @@ class Recipe:
 		
 	def __str__(self):
 		food_list_str = [str(food) for food in self.food_list]
-		print("Ingredients:")
+		str_form = "\nIngredients:\n"
 		for food in food_list_str:
-			print (food)
-		print("Follow these instructions food")
+			str_form += (food+"\n")
+		str_form += "\n\n"
+		str_form += "Follow these instructions fool\n"
 		for direction in self.directions:
-			print (direction)
+			str_form += (direction+"\n")
+		return str_form
 		
 			
