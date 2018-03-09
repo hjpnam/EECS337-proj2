@@ -99,8 +99,8 @@ def toUnhealthy(recipe):
 		step_lower = step.lower()
 		for unhealthy, healthy in healthy_substitutes.iteritems():
 			if healthy in step_lower:
-				print healthy
-				print unhealthy
+				print (healthy)
+				print (unhealthy)
 				step_lower = step_lower.replace(healthy, unhealthy)
 				steps[i] = step_lower
 	rec.directions = steps
