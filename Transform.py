@@ -3,6 +3,7 @@ from Ingredient import Ingredient
 from Recipe import Recipe
 import copy
 import nltk
+from fractions import Fraction
 
 def toVegetarian(recipe, vegOption):
 	rec = recipe
@@ -15,13 +16,73 @@ def toVegetarian(recipe, vegOption):
 
 def MakeIndian(recipe):
 	rec = recipe
+	serving = int(rec.serving)
 	measurements = ["tablespoon", "tablespoons", "teaspoon", "teaspoon", "teaspoons", "pinch", "dash", "clove", "cloves"]
-	first = Ingredient("2 teaspoons ground cumin")
-	second = Ingredient("1/2 teaspoon ground cardamom")
-	third = Ingredient("1 piece cinnamon stick")
-	fourth = Ingredient("1 teaspoon ground turmeric")
-	fifth = Ingredient("1 teaspoon curry powder")
-	indian_list = [first, second, third, fourth]
+	spiceAmount = 0.25*serving
+	first = Ingredient(str(Fraction(spiceAmount)) + " teaspoons ground cumin")
+	second = Ingredient(str(Fraction(spiceAmount)) + " teaspoons ground cardamom")
+	spiceTwoAmount = 0.125*serving
+	third = Ingredient(str(Fraction(spiceTwoAmount)) + " pieces cinnamon stick")
+	fourth = Ingredient(str(Fraction(spiceTwoAmount)) + " teaspoon ground turmeric")
+	curryAmount = 0.5*serving
+	fifth = Ingredient(str(Fraction(curryAmount)) + " tablespoons curry powder")
+	indian_list = [first, second, third, fourth, fifth]
+	bad_list = []
+
+	for ingredient in recipe.food_list:
+		if ingredient.getMeasurement() in measurements:
+			bad = copy.deepcopy(ingredient)
+			if ("water" not in bad.getName()):
+				bad_list.append(bad.getName())
+			#bad_list.append(bad.getName())
+	new_list = []
+	for ingredient in recipe.food_list:
+		if ingredient.getName() not in bad_list:
+			new_list.append(ingredient)
+	recipe.food_list = new_list
+	rec.food_list.extend(indian_list)
+
+	#Food list has replaced spices with indian spices
+	#Next step: replacing directions
+	#Look for each word in each ingredient individually
+	#If any of them removed, replace with "spices" or ""
+	#Replace with spices the first time in that direction you encounter a removed ingredient
+
+	new_directions = []
+	directions = rec.directions
+	for direction in directions:
+		changed = False
+		for ingredient in bad_list:
+			text = nltk.word_tokenize(ingredient)
+			for word in text:
+				if word in direction:
+					mystring = str(word)
+					if changed == False:
+						direction = direction.replace(mystring, "spices")
+						changed = True
+					if changed == True:
+						direction = direction.replace(mystring, '') #Simply remove the ingredient
+						direction = direction.replace("  ,", '') #String Cleanup
+						direction = direction.replace(" and  ", ' ')
+						direction = direction.replace(",  .", '.')
+						direction = direction.replace(", ,   .", '.')
+		new_directions.append(direction)
+	rec.directions = new_directions
+	return rec
+
+def MakeItalian(recipe):
+	rec = recipe
+	serving = int(rec.serving)
+	measurements = ["tablespoon", "tablespoons", "teaspoon", "teaspoon", "teaspoons", "pinch", "dash", "clove", "cloves"]
+	spiceAmount = 0.25*serving
+	first = Ingredient(str(Fraction(spiceAmount)) + " teaspoons oregano")
+	second = Ingredient(str(Fraction(spiceAmount)) + " teaspoons basil")
+	spiceTwoAmount = 0.125*serving
+	third = Ingredient(str(Fraction(spiceTwoAmount)) + " teaspoons thyme")
+	fourth = Ingredient(str(Fraction(spiceTwoAmount)) + " teaspoons rosemary")
+	curryAmount = 0.5*serving
+	fifth = Ingredient(str(Fraction(curryAmount)) + " teaspoons parsley")
+	indian_list = [first, second, third, fourth, fifth]
 	bad_list = []
 
 	for ingredient in recipe.food_list:
@@ -105,3 +166,8 @@ def toUnhealthy(recipe):
 				steps[i] = step_lower
 	rec.directions = steps
 	return rec
+
+mine = Recipe("https://www.allrecipes.com/recipe/151266/boneless-buffalo-wings/")
+MakeItalian(mine)
+print(mine.directions)
+print(mine.food_list)

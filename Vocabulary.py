@@ -27,7 +27,8 @@ measurements = [
     'package', 'packages',
     'sprig', 'sprigs',
     'dash', 'dashes',
-    'envelope', 'envelopes'
+    'envelope', 'envelopes',
+    'piece', 'pieces'
 ]
 
 vegetarian = ['seitan',
