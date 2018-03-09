@@ -9,8 +9,9 @@ class Recipe:
 		self.page = BeautifulSoup(requests.get(url).content, 'html.parser')
 		ingredients = [ingredient.get_text() for ingredient in self.page.find_all(itemprop="ingredients")]
 		self.directions = [direction.get_text() for direction in self.page.find_all(class_="recipe-directions__list--item")]
-		self.tools = self.find_tools
-		self.methods = []
+		self.tools = self.find_tools()
+		self.primary_methods = self.get_primary_methods()
+		self.other_methods = self.get_other_methods()
 		self.food_list = [Ingredient(i) for i in ingredients]
 		self.serving = self.page.find(id='metaRecipeServings').get('content')
 
@@ -53,7 +54,7 @@ class Recipe:
 				elif method + "s" in step.lower():
 					method = method[:-1]
 					primary_methods_found.append(method)
-		return set(primary_methods_found)
+		return list(set(primary_methods_found))
 
 	def get_other_methods(self):
 		steps = self.directions
@@ -74,7 +75,7 @@ class Recipe:
 				elif method + "s" in step.lower():
 					method = method[:-1]
 					primary_methods_found.append(method)
-		return set(other_methods_found)
+		return list(set(other_methods_found))
 
 	def __str__(self):
 		food_list_str = [str(food) for food in self.food_list]
