@@ -17,6 +17,7 @@ class Recipe:
 
 	def find_tools(self):
 		directions = self.directions
+		stopwords = ["boil", "heat", "sauce", "egg", "mixture", "oil", "blend", "chicken"]
 		nouns = []
 		for direction in directions:
 			text = nltk.word_tokenize(direction)
@@ -29,11 +30,11 @@ class Recipe:
 						tool = []
 						while (spot<end):
 							if (parsed[spot][1] == "NN"):
-								if (parsed[spot][0] != "boil" and parsed[spot][0] != "heat" and parsed[spot][0] != "sauce"):
+								if (parsed[spot][0] not in stopwords):
 									tool.append(parsed[spot][0])
 							spot += 1
-						if (len(tool)>0): nouns.append(tool)
-		return nouns
+						if (len(tool)>0): nouns.append(' '.join(tool))
+		return set(nouns)
 
 	def get_primary_methods(self):
 		steps = self.directions
