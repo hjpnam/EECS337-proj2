@@ -2,7 +2,7 @@ from Recipe import Recipe
 from Transform import *
 import sys
 
-#printing recipe objects won't print pretty at the moment. need to prettify 
+#printing recipe objects won't print pretty at the moment. need to prettify
 def main():
 	if len(sys.argv) == 2:
 		recipe = Recipe(argv[1])
@@ -17,3 +17,5 @@ def main():
 			print ("invalid input")
 	else:
 		print("wrong number of arguments")
+
+main()
