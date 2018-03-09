@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import nltk
 from Ingredient import Ingredient
+from Vocabulary import *
 
 class Recipe:
 	def __init__(self, url):
@@ -32,6 +33,48 @@ class Recipe:
 							spot += 1
 						if (len(tool)>0): nouns.append(tool)
 		return nouns
+
+	def get_primary_methods(self):
+		steps = self.directions
+		primary_methods_found = []
+		for step in steps:
+			for method in primary_methods:
+				if method in step.lower():
+					primary_methods_found.append(method)
+				elif method + "ing" in step.lower():
+					method = method[:-3]
+					primary_methods_found.append(method)
+				elif method + "ed" in step.lower():
+					method = method[:-2]
+					primary_methods_found.append(method)
+				elif method + "d" in step.lower():
+					method = method[:-1]
+					primary_methods_found.append(method)
+				elif method + "s" in step.lower():
+					method = method[:-1]
+					primary_methods_found.append(method)
+		return set(primary_methods_found)
+
+	def get_other_methods(self):
+		steps = self.directions
+		other_methods_found = []
+		for step in steps:
+			for method in other_methods:
+				if method in step.lower():
+					other_methods_found.append(method)
+				elif method + "ing" in step.lower():
+					method = method[:-3]
+					other_methods_found.append(method)
+				elif method + "ed" in step.lower():
+					method = method[:-2]
+					other_methods_found.append(method)
+				elif method + "d" in step.lower():
+					method = method[:-1]
+					primary_methods_found.append(method)
+				elif method + "s" in step.lower():
+					method = method[:-1]
+					primary_methods_found.append(method)
+		return set(other_methods_found)
 
 	def __str__(self):
 		food_list_str = [str(food) for food in self.food_list]
