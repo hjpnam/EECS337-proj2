@@ -65,6 +65,7 @@ meat = [
     'turtle',
     'veal',
     'venison'
+		'chicken broth'
 ]
 
 fish = [

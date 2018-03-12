@@ -12,6 +12,16 @@ def toVegetarian(recipe, vegOption):
 	for i in range(len(rec.food_list)):
 		if(rec.food_list[i].getName().lower() in meat or rec.food_list[i].getName().lower() in fish):
 			rec.food_list[i].data['name'] = vegOption
+	steps = rec.directions
+	animals = meat
+	animals.extend(fish)
+	for i in range(len(steps)):
+		step_lower = steps[i].lower()
+		for animal in animals:
+			if animal in step_lower:
+				step_lower = step_lower.replace(animal, vegOption)
+				steps[i]=step_lower
+	rec.directions = steps
 	return rec
 
 def MakeIndian(recipe):
@@ -167,7 +177,3 @@ def toUnhealthy(recipe):
 	rec.directions = steps
 	return rec
 
-mine = Recipe("https://www.allrecipes.com/recipe/151266/boneless-buffalo-wings/")
-MakeItalian(mine)
-print(mine.directions)
-print(mine.food_list)

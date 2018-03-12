@@ -5,6 +5,9 @@ import sys
 #printing recipe objects won't print pretty at the moment. need to prettify
 def main():
 	if len(sys.argv) == 2:
+		if sys.argv[1][0:4] != "http":
+			print ("Invalid url, missing http")
+			return
 		recipe = Recipe(sys.argv[1])
 		option = int(input("Enter 1 for Healthier, 2 for Indian, 3 for Vegetarian, 4 for Unhealthier: "))
 		if option == 1:

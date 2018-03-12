@@ -86,8 +86,10 @@ class Ingredient:
     def __repr__(self):
         result = []
         result.append(self.data['quantity'])
-        result.append(self.data['measurement'])
+        if(self.data['measurement'] != 'none'):
+          result.append(self.data['measurement'])
         result.extend(self.data['descriptor'])
         result.append(self.data['name'])
-        result.append(self.data['preparation'])
+        if(self.data['preparation'] != 'none'):
+          result.append(self.data['preparation'])
         return " ".join(result)

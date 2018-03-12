@@ -13,6 +13,8 @@ class Recipe:
 		self.primary_methods = self.get_primary_methods()
 		self.other_methods = self.get_other_methods()
 		self.food_list = [Ingredient(i) for i in ingredients]
+#		for i in self.food_list:
+	#		print (i.getData()['name'])
 		self.serving = self.page.find(id='metaRecipeServings').get('content')
 
 	def find_tools(self):
