@@ -108,7 +108,7 @@ def MakeItalian(recipe):
 		direction_lower = direction.lower()
 		for ingredient in bad_list:
 			if ingredient in direction:
-				direction_lower = direction_lower.replace(ingredient, ingredient + " and spices")
+				direction_lower = direction_lower.replace(ingredient, ingredient + " and herbs")
 				directions[i] = direction_lower
 		for ingredient in italian_substitutes.keys():
 			if ingredient in direction_lower:
@@ -117,7 +117,7 @@ def MakeItalian(recipe):
 				directions[i] = direction_lower
 	rec.directions = directions
 	return rec
-	
+
 def toHealthy(recipe):
 	rec = recipe
 	# replace in ingredients
@@ -157,7 +157,3 @@ def toUnhealthy(recipe):
 				steps[i] = step_lower
 	rec.directions = steps
 	return rec
-
-rec = Recipe("https://www.allrecipes.com/recipe/12976/cowboy-stew-i/")
-new_rec = toHealthy(rec)
-print new_rec
