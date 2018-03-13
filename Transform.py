@@ -44,7 +44,6 @@ def MakeIndian(recipe):
 			bad = copy.deepcopy(ingredient)
 			if ("water" not in bad.getName()):
 				bad_list.append(bad.getName())
-			#bad_list.append(bad.getName())
 	new_list = []
 	for ingredient in recipe.food_list:
 		if ingredient.getName() not in bad_list:
@@ -52,32 +51,24 @@ def MakeIndian(recipe):
 	recipe.food_list = new_list
 	rec.food_list.extend(indian_list)
 
-	#Food list has replaced spices with indian spices
-	#Next step: replacing directions
-	#Look for each word in each ingredient individually
-	#If any of them removed, replace with "spices" or ""
-	#Replace with spices the first time in that direction you encounter a removed ingredient
+	for i in range(len(rec.food_list)):
+		for ingredient in indian_substitutes.keys():
+			if ingredient in rec.food_list[i].getName().lower():
+				rec.food_list[i].data['name'] = indian_substitutes[ingredient]
 
-	new_directions = []
 	directions = rec.directions
-	for direction in directions:
-		changed = False
+	for i, direction in enumerate(directions):
+		direction_lower = direction.lower()
 		for ingredient in bad_list:
-			text = nltk.word_tokenize(ingredient)
-			for word in text:
-				if word in direction:
-					mystring = str(word)
-					if changed == False:
-						direction = direction.replace(mystring, "spices")
-						changed = True
-					if changed == True:
-						direction = direction.replace(mystring, '') #Simply remove the ingredient
-						direction = direction.replace("  ,", '') #String Cleanup
-						direction = direction.replace(" and  ", ' ')
-						direction = direction.replace(",  .", '.')
-						direction = direction.replace(", ,   .", '.')
-		new_directions.append(direction)
-	rec.directions = new_directions
+			if ingredient in direction:
+				direction_lower = direction_lower.replace(ingredient, ingredient + " and spices")
+				directions[i] = direction_lower
+		for ingredient in indian_substitutes.keys():
+			if ingredient in direction_lower:
+				substitute = indian_substitutes[ingredient]
+				direction_lower = direction_lower.replace(ingredient, substitute)
+				directions[i] = direction_lower
+	rec.directions = directions
 	return rec
 
 def MakeItalian(recipe):
@@ -124,7 +115,7 @@ def MakeItalian(recipe):
 				if word in direction:
 					mystring = str(word)
 					if changed == False:
-						direction = direction.replace(mystring, "spices")
+						direction = direction.replace(mystring, "herbs")
 						changed = True
 					if changed == True:
 						direction = direction.replace(mystring, '') #Simply remove the ingredient
@@ -148,11 +139,12 @@ def toHealthy(recipe):
 	# replace in steps
 	steps = recipe.directions
 	for i, step in enumerate(steps):
+		step_lower = step.lower()
 		for ingredient in healthy_substitutes.keys():
-			if ingredient in step.lower():
+			if ingredient in step_lower:
 				substitute = healthy_substitutes[ingredient]
-				step = step.replace(ingredient, substitute)
-				steps[i] = step
+				step_lower = step_lower.replace(ingredient, substitute)
+				steps[i] = step_lower
 	rec.directions = steps
 	return rec
 
@@ -170,10 +162,11 @@ def toUnhealthy(recipe):
 		step_lower = step.lower()
 		for unhealthy, healthy in healthy_substitutes.iteritems():
 			if healthy in step_lower:
-				print (healthy)
-				print (unhealthy)
 				step_lower = step_lower.replace(healthy, unhealthy)
 				steps[i] = step_lower
 	rec.directions = steps
 	return rec
 
+rec = Recipe("https://www.allrecipes.com/recipe/235357/chef-johns-penne-with-vodka-sauce/")
+new_rec = MakeIndian(rec)
+print new_rec

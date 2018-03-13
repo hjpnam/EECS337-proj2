@@ -302,7 +302,23 @@ healthy_substitutes = {
     "cream cheese":"low-fat cottage cheese",
     "cornstarch": "potato starch",
     "butter": "coconut oil",
+    "half-and-half":"skim milk",
 # methods
     "boil":"steam",
     "deep-fry":"pan-fry"
+}
+
+indian_substitutes = {
+    "marinara sauce":"curry sauce",
+    "pesto":"curry",
+    "parmesan cheese":"paneer",
+    "mozzerella":"paneer",
+    "cheddar":"paneer",
+    "provolone":"paneer",
+    "cheese":"paneer",
+    "penne pasta":"rice",
+    "penne":"rice",
+    "macaroni":"rice",
+    "pasta":"rice",
+    "beef":"lamb"
 }
