@@ -51,9 +51,10 @@ class Ingredient:
                 descriptorList.append(tagged[i][0])
                 next += 1
                 continue
-            if (tagged[i][0] == ',' and tagged[i-1][0].lower() not in descriptors):
+            if ((tagged[i][0] == ',' or tagged[i][0] == '-') and tagged[i-1][0].lower() not in descriptors):
                 break
-            nameList.append(tagged[i][0])
+            if (tagged[i][0] != ','):
+                nameList.append(tagged[i][0])
             next += 1
 
         self.data['name'] = " ".join(nameList)
