@@ -7,8 +7,8 @@ from Vocabulary import *
 class Recipe:
 	def __init__(self, url):
 		self.page = BeautifulSoup(requests.get(url).content, 'html.parser')
-		ingredients = [ingredient.get_text() for ingredient in self.page.find_all(itemprop="ingredients")]
-		self.directions = [direction.get_text() for direction in self.page.find_all(class_="recipe-directions__list--item")]
+		ingredients = [ingredient.get_text().encode('utf-8') for ingredient in self.page.find_all(itemprop="ingredients")]
+		self.directions = [direction.get_text().encode('utf-8') for direction in self.page.find_all(class_="recipe-directions__list--item")]
 		self.tools = self.find_tools()
 		self.primary_methods = self.get_primary_methods()
 		self.other_methods = self.get_other_methods()
@@ -86,7 +86,7 @@ class Recipe:
 		for food in food_list_str:
 			str_form += (food+"\n")
 		str_form += "\n\n"
-		str_form += "Follow these instructions fool\n"
+		str_form += "Instructions:\n\n"
 		for direction in self.directions:
 			str_form += (direction+"\n")
 		return str_form

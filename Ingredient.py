@@ -54,28 +54,14 @@ class Ingredient:
             if ((tagged[i][0] == ',' or tagged[i][0] == '-') and tagged[i-1][0].lower() not in descriptors):
                 break
             if (tagged[i][0] != ','):
-                if (tagged[i][0] == '('):
-                    temp = ''
-                    while (tagged[i][0] != ')'):
-                        temp += tagged[i][0]
-                        i += 1
-                        next += 1
-                    temp += ')'
-                    #next += 1
-                    nameList.append(temp)
-                    continue
-                else:
-                    nameList.append(tagged[i][0])
-                    next += 1
+                nameList.append(tagged[i][0])
+            next += 1
 
         self.data['name'] = " ".join(nameList)
         self.data['descriptor'] = descriptorList
 
-        print next
-        print len(tagged)
-        print tagged
         if (next != len(tagged) and tagged[next+1][0] not in stopWords):
-            self.data['preparation'] = " ".join(tokenized[next + 1:])
+            self.data['preparation'] = " ".join(tokenized[next+1:])
 
     def getData(self):
         return self.data
