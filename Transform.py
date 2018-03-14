@@ -66,6 +66,10 @@ def fromVegetarian(recipe):
 		for m in meat_priority_inv.keys():
 			if m in food_list[i].getName():
 				food_list[i].data['name'] = meat_priority_inv[m]
+				food_list[i].data['measurement'] = 'gram'
+				food_list[i].data['quantity'] = '100'
+				food_list[i].data['descriptor'] = []
+				food_list[i].data['preparation'] = 'none'
 
 		for m in meat_inv:
 			if m in food_list[i].getName():
@@ -75,16 +79,9 @@ def fromVegetarian(recipe):
 				food_list[i].data['descriptor'] = []
 				food_list[i].data['preparation'] = 'none'
 
-		for f in fish:
-			if f in food_list[i].getName():
-				food_list[i].data['name'] = 'tofu'
-				food_list[i].data['measurement'] = 'gram'
-				food_list[i].data['quantity'] = '100'
-				food_list[i].data['descriptor'] = []
-				food_list[i].data['preparation'] = 'none'
-
 	for i in range(len(steps)):
 		step_lower = steps[i].lower()
+		step_lower.replace('vegetarian', '')
 		for m in meat_priority_inv.keys():
 			if m in step_lower:
 				step_lower = step_lower.replace(m, meat_priority_inv[m])
