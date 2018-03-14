@@ -41,7 +41,8 @@ vegetarian_attribute = {
     'seitan': {'servingSize': 0.5, 'measurement': 'cup'},
     'lentil': {'servingSize': 0.5, 'measurement': 'cup'},
     'tofu': {'servingSize': 150, 'measurement': 'gram'},
-    'mushroom': {'servingSize': 90, 'measurement': 'gram'}
+    'mushroom': {'servingSize': 90, 'measurement': 'gram'},
+		'jackfruit': {'servingSize': 100, 'measurement': 'gram'}
 }
 
 meat_priority = {
