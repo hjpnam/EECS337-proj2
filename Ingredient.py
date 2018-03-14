@@ -54,12 +54,26 @@ class Ingredient:
             if ((tagged[i][0] == ',' or tagged[i][0] == '-') and tagged[i-1][0].lower() not in descriptors):
                 break
             if (tagged[i][0] != ','):
-                nameList.append(tagged[i][0])
-            next += 1
+                if (tagged[i][0] == '('):
+                    temp = ''
+                    while (tagged[i][0] != ')'):
+                        temp += tagged[i][0]
+                        i += 1
+                        next += 1
+                    temp += ')'
+                    #next += 1
+                    nameList.append(temp)
+                    continue
+                else:
+                    nameList.append(tagged[i][0])
+                    next += 1
 
         self.data['name'] = " ".join(nameList)
         self.data['descriptor'] = descriptorList
 
+        print next
+        print len(tagged)
+        print tagged
         if (next != len(tagged) and tagged[next+1][0] not in stopWords):
             self.data['preparation'] = " ".join(tokenized[next + 1:])
 
@@ -86,11 +100,16 @@ class Ingredient:
 
     def __repr__(self):
         result = []
-        result.append(self.data['quantity'])
-        if(self.data['measurement'] != 'none'):
+        if (self.data['quantity'] != ''):
+          result.append(self.data['quantity'])
+        if (self.data['measurement'] != 'none'):
           result.append(self.data['measurement'])
-        result.extend(self.data['descriptor'])
-        result.append(self.data['name'])
-        if(self.data['preparation'] != 'none'):
+        if (len(self.data['descriptor']) != 0):
+          result.append(", ".join(self.data['descriptor']))
+        if (self.data['preparation'] != 'none'):
+          result.append(self.data['name'] + ',')
           result.append(self.data['preparation'])
+        else:
+          result.append(self.data['name'])
+
         return " ".join(result)

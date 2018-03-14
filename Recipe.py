@@ -82,7 +82,7 @@ class Recipe:
 
 	def __str__(self):
 		food_list_str = [str(food) for food in self.food_list]
-		str_form = "\nIngredients:\n"
+		str_form = "\nIngredients:\n\n"
 		for food in food_list_str:
 			str_form += (food+"\n")
 		str_form += "\n\n"
