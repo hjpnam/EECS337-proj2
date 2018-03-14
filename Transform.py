@@ -40,15 +40,13 @@ def toVegetarian(recipe):
 		for m in meat:
 			if m in step_lower:
 				step_lower = step_lower.replace(m, meat[m])
-				steps[i]=step_lower
 		for f in fish:
 			if f in step_lower:
 				step_lower = step_lower.replace(f, 'tofu')
-				steps[i]=step_lower
 		for trash in meat_trash:
 			if trash in step_lower:
 				step_lower = step_lower.replace(trash, '')
-				steps[i]=step_lower
+		steps[i]=step_lower
 	rec.food_list = food_list
 	rec.directions = steps
 	return rec
@@ -88,15 +86,11 @@ def fromVegetarian(recipe):
 		for m in meat_inv.keys():
 			if m in step_lower:
 				step_lower = step_lower.replace(m, meat_inv[m])
-				steps[i]=step_lower
-		for f in fish:
-			if f in step_lower:
-				step_lower = step_lower.replace(f, 'tofu')
-				steps[i]=step_lower
+				
 		for trash in meat_trash:
 			if trash in step_lower:
 				step_lower = step_lower.replace(trash, '')
-				steps[i]=step_lower
+		steps[i]=step_lower
 	rec.food_list = food_list
 	rec.directions = steps
 	return rec
