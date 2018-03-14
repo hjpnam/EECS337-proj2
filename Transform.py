@@ -65,12 +65,11 @@ def MakeIndian(recipe):
 			bad = copy.deepcopy(ingredient)
 			if ("water" not in bad.getName()):
 				bad_list.append(bad.getName())
-	new_list = []
-	for ingredient in recipe.food_list:
-		if ingredient.getName() not in bad_list:
-			new_list.append(ingredient)
-	recipe.food_list = new_list
-	rec.food_list.extend(indian_list)
+
+	new_food_list = recipe.food_list
+	if len(bad_list) >= 1:
+		new_food_list.extend(indian_list)
+	rec.food_list = new_food_list
 	for i in range(len(rec.food_list)):
 		for ingredient in indian_substitutes.keys():
 			if ingredient in rec.food_list[i].getName().lower():
@@ -113,12 +112,11 @@ def MakeItalian(recipe):
 			bad = copy.deepcopy(ingredient)
 			if ("water" not in bad.getName()):
 				bad_list.append(bad.getName())
-	new_list = []
-	for ingredient in recipe.food_list:
-		if ingredient.getName() not in bad_list:
-			new_list.append(ingredient)
-	recipe.food_list = new_list
-	rec.food_list.extend(italian_list)
+
+	new_food_list = recipe.food_list
+	if len(bad_list) >= 1:
+		new_food_list.extend(italian_list)
+	rec.food_list = new_food_list
 
 	for i in range(len(rec.food_list)):
 		for ingredient in italian_substitutes.keys():
