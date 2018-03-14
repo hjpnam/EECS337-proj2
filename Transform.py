@@ -81,7 +81,7 @@ def fromVegetarian(recipe):
 
 	for i in range(len(steps)):
 		step_lower = steps[i].lower()
-		step_lower.replace('vegetarian', '')
+		step_lower = step_lower.replace('vegetarian', '')
 		for m in meat_priority_inv.keys():
 			if m in step_lower:
 				step_lower = step_lower.replace(m, meat_priority_inv[m])
