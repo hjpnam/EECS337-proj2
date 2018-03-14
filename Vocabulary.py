@@ -56,15 +56,23 @@ meat_priority = {
 
 meat_trash = [
 	'spareribs',
+	'spare ribs',
+	'sparerib',
+	'spare rib',
 	'ribs',
+	'chops'
 	'chop',
 	'rib',
-	'chops',
 	'loin',
 	'sirloin',
+	'shoulder',
 	'steak',
 	'meat',
-	'meatloaf'
+	'meatloaf',
+	'breasts',
+	'breast',
+	'wings',
+	'wing'	
 ]
 
 meat = {

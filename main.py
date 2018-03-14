@@ -8,7 +8,7 @@ def main():
 			print ("Invalid url, missing http")
 			return
 		recipe = Recipe(sys.argv[1])
-		option = int(input("Enter 1 for Healthier, 2 for Indian, 3 for Italian, 4 for Vegetarian, 5 for Unhealthier: "))
+		option = int(input("Enter 1 for Healthier, 2 for Indian, 3 for Italian, 4 for toVegetarian, 5 for Unhealthier, 6 for fromVegetarian: "))
 		if option == 1:
 			print (toHealthy(recipe))
 		elif option == 2:
@@ -16,9 +16,11 @@ def main():
 		elif option == 3:
 			print (MakeItalian(recipe))
 		elif option == 4:
-			print(toVegetarian(recipe))
+			print (toVegetarian(recipe))
 		elif option == 5:
 			print (toUnhealthy(recipe))
+		elif option == 6:
+			print (fromVegetarian(recipe))
 		else:
 			print ("invalid input")
 	else:
