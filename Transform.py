@@ -44,7 +44,7 @@ def toVegetarian(recipe):
 		for f in fish:
 			if f in step_lower:
 				step_lower = step_lower.replace(f, 'tofu')
-				steps[
+				steps[i]=step_lower
 		for trash in meat_trash:
 			if trash in step_lower:
 				step_lower = step_lower.replace(trash, '')
