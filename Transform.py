@@ -5,38 +5,46 @@ import copy
 import nltk
 from fractions import Fraction
 
-def toVegetarian(recipe, vegOption):
+def toVegetarian(recipe):
 	rec = recipe
-	if vegOption.lower() not in vegetarian:
-		return False
-	animals = meat
-	animals.extend(fish)
 	steps = rec.directions
 	food_list = rec.food_list
 	serving = rec.serving
-
+	
 	for i in range(len(food_list)):
 		for m in meat_priority.keys():
 			if m in food_list[i].getName():
 				food_list[i].data['name'] = meat_priority[m]
-
-		for animal in animals:
-			if animal in food_list[i].getName():
-				food_list[i].data['name'] = vegOption
-				food_list[i].data['measurement'] = str(vegetarian_attribute[vegOption]['measurement'])
-				food_list[i].data['quantity'] = str(vegetarian_attribute[vegOption]['servingSize']*serving)
+				
+		for m in meat:
+			if m in food_list[i].getName():
+				food_list[i].data['name'] = meat[m]
+				food_list[i].data['measurement'] = str(vegetarian_attribute[meat[m]]['measurement'])
+				food_list[i].data['quantity'] = str(vegetarian_attribute[meat[m]]['servingSize']*serving)
 				food_list[i].data['descriptor'] = []
 				food_list[i].data['preparation'] = 'none'
-
+				
+		for f in fish:
+			if f in food_list[i].getName():
+				food_list[i].data['name'] = 'tofu'
+				food_list[i].data['measurement'] = str(vegetarian_attribute['tofu']['measurement'])
+				food_list[i].data['quantity'] = str(vegetarian_attribute['tofu']['servingSize']*serving)
+				food_list[i].data['descriptor'] = []
+				food_list[i].data['preparation'] = 'none'
+				
 	for i in range(len(steps)):
 		step_lower = steps[i].lower()
 		for m in meat_priority.keys():
 			if m in step_lower:
 				step_lower = step_lower.replace(m, meat_priority[m])
-		for animal in animals:
-			if animal in step_lower:
-				step_lower = step_lower.replace(animal, vegOption)
+		for m in meat:
+			if m in step_lower:
+				step_lower = step_lower.replace(m, meat[m])
 				steps[i]=step_lower
+		for f in fish:
+			if f in step_lower:
+				step_lower = step_lower.replace(f, 'tofu')
+				steps[
 		for trash in meat_trash:
 			if trash in step_lower:
 				step_lower = step_lower.replace(trash, '')
@@ -44,6 +52,9 @@ def toVegetarian(recipe, vegOption):
 	rec.food_list = food_list
 	rec.directions = steps
 	return rec
+	
+def fromVegetarian(recipe):
+	
 
 def MakeIndian(recipe):
 	rec = recipe
