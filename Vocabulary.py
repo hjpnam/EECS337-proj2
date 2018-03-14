@@ -67,6 +67,12 @@ meat_trash = [
 ]
 
 meat = [
+		'spare ribs',
+		'spare rib',
+		'spareribs',
+		'sparerib',
+		'ribs',
+		'rib',
     'bacon',
     'bear',
     'beef',
