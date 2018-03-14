@@ -21,11 +21,11 @@ def toVegetarian(recipe, vegOption):
 				food_list[i].data['name'] = meat_priority[m]
 				
 		for animal in animals:
-			if animal in food_list[i].getName():	
+			if animal in food_list[i].getName():
 				food_list[i].data['name'] = vegOption
 				food_list[i].data['measurement'] = str(vegetarian_attribute[vegOption]['measurement'])
 				food_list[i].data['quantity'] = str(vegetarian_attribute[vegOption]['servingSize']*serving)
-				food_list[i].data['descriptor'] = 'none'
+				food_list[i].data['descriptor'] = []
 				food_list[i].data['preparation'] = 'none'
 	
 	for i in range(len(steps)):
@@ -33,6 +33,8 @@ def toVegetarian(recipe, vegOption):
 		for m in meat_priority.keys():
 			if m in step_lower:
 				step_lower = step_lower.replace(m, meat_priority[m])
+				for trash in meat_trash:
+					step_lower = step_lower.replace(trash, "")
 				steps[i]=step_lower
 		for animal in animals:
 			if animal in step_lower:

@@ -51,8 +51,18 @@ meat_priority = {
     'bone broth': 'mushroom broth',
     'turkey stock': 'mushroom broth',
     'beef stock': 'mushroom broth',
-
 }
+
+meat_trash = [
+	'ribs',
+	'chop',
+	'rib',
+	'chops',
+	'loin',
+	'sirloin',
+	'steak',
+	'meat'
+]
 
 meat = [
     'bacon',
@@ -62,27 +72,37 @@ meat = [
     'bison',
     'calf',
     'caribou',
+		'chicken meat',
+		'chicken breast',
+		'chicken breasts',
+		'chicken wing',
+		'chicken wings',
     'chicken',
     'goat',
     'ham',
     'horse',
     'kangaroo',
+		'lamb chops',
+		'lamb chop',
+		'lamb rib',
     'lamb',
     'moose',
     'mutton',
     'opposum',
+		'pork loin',
     'pork',
     'rabbit',
     'snake',
     'squirrel',
+		't-bone steak',
     'steak',
     'sweetbreads',
     'tripe',
+		'turkey sausage'
     'turkey',
     'turtle',
     'veal',
     'venison'
-		'chicken broth'
 ]
 
 fish = [
