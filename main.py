@@ -16,8 +16,7 @@ def main():
 		elif option == 3:
 			print (MakeItalian(recipe))
 		elif option == 4:
-			vegOption = input("Choose a vegetarian option. seitan, lentil, tofu, mushroom: ")
-			print(toVegetarian(recipe,vegOption))
+			print(toVegetarian(recipe))
 		elif option == 5:
 			print (toUnhealthy(recipe))
 		else:

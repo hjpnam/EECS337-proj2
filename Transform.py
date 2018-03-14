@@ -10,12 +10,12 @@ def toVegetarian(recipe):
 	steps = rec.directions
 	food_list = rec.food_list
 	serving = rec.serving
-	
+
 	for i in range(len(food_list)):
 		for m in meat_priority.keys():
 			if m in food_list[i].getName():
 				food_list[i].data['name'] = meat_priority[m]
-				
+
 		for m in meat:
 			if m in food_list[i].getName():
 				food_list[i].data['name'] = meat[m]
@@ -23,7 +23,7 @@ def toVegetarian(recipe):
 				food_list[i].data['quantity'] = str(vegetarian_attribute[meat[m]]['servingSize']*serving)
 				food_list[i].data['descriptor'] = []
 				food_list[i].data['preparation'] = 'none'
-				
+
 		for f in fish:
 			if f in food_list[i].getName():
 				food_list[i].data['name'] = 'tofu'
@@ -31,7 +31,7 @@ def toVegetarian(recipe):
 				food_list[i].data['quantity'] = str(vegetarian_attribute['tofu']['servingSize']*serving)
 				food_list[i].data['descriptor'] = []
 				food_list[i].data['preparation'] = 'none'
-				
+
 	for i in range(len(steps)):
 		step_lower = steps[i].lower()
 		for m in meat_priority.keys():
@@ -52,9 +52,9 @@ def toVegetarian(recipe):
 	rec.food_list = food_list
 	rec.directions = steps
 	return rec
-	
+
 def fromVegetarian(recipe):
-	
+	pass
 
 def MakeIndian(recipe):
 	rec = recipe
