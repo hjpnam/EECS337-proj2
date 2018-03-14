@@ -54,6 +54,7 @@ meat_priority = {
 }
 
 meat_trash = [
+	'spareribs',
 	'ribs',
 	'chop',
 	'rib',
@@ -61,7 +62,8 @@ meat_trash = [
 	'loin',
 	'sirloin',
 	'steak',
-	'meat'
+	'meat',
+	'meatloaf'
 ]
 
 meat = [
@@ -98,6 +100,9 @@ meat = [
     'steak',
     'sweetbreads',
     'tripe',
+		'andouille sausage',
+		'andouille sausages',
+		'sausage',
 		'turkey sausage'
     'turkey',
     'turtle',

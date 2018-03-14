@@ -33,8 +33,9 @@ def toVegetarian(recipe, vegOption):
 		for m in meat_priority.keys():
 			if m in step_lower:
 				step_lower = step_lower.replace(m, meat_priority[m])
-				for trash in meat_trash:
-					step_lower = step_lower.replace(trash, "")
+		for trash in meat_trash:
+			if trash in step_lower:
+				step_lower = step_lower.replace(trash, '')
 				steps[i]=step_lower
 		for animal in animals:
 			if animal in step_lower:
