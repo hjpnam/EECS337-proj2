@@ -15,7 +15,7 @@ class Recipe:
 		self.food_list = [Ingredient(i) for i in ingredients]
 #		for i in self.food_list:
 	#		print (i.getData()['name'])
-		self.serving = self.page.find(id='metaRecipeServings').get('content')
+		self.serving = int(self.page.find(id='metaRecipeServings').get('content'))
 
 	def find_tools(self):
 		directions = self.directions

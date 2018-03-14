@@ -37,6 +37,23 @@ vegetarian = ['seitan',
     'mushroom'
 ]
 
+vegetarian_attribute = {
+    'seitan': {'servingSize': 0.5, 'measurement': 'cup'},
+    'lentil': {'servingSize': 0.5, 'measurement': 'cup'},
+    'tofu': {'servingSize': 150, 'measurement': 'gram'},
+    'mushroom': {'servingSize': 90, 'measurement': 'gram'}
+}
+
+meat_priority = {
+    'chicken broth': 'mushroom broth',
+    'beef broth': 'mushroom broth',
+    'chicken stock': 'mushroom broth',
+    'bone broth': 'mushroom broth',
+    'turkey stock': 'mushroom broth',
+    'beef stock': 'mushroom broth',
+
+}
+
 meat = [
     'bacon',
     'bear',
@@ -281,28 +298,57 @@ other_methods = [
 
 healthy_substitutes = {
 # ingredients
-    "rice":"quinoa",
-    "couscous":"quinoa",
-    "flour tortilla":"corn tortilla",
-    "stevia":"sugar",
-    "bread": "whole wheat bread",
-    "soda":"tonic water",
-    "french fries":"sweet potato fries",
-    "potato chips":"kale chips",
-    "sour cream":"greek yogurt",
-    "mayonaise":"mustard",
-    "croutons":"nuts",
-    "chocolate chips": "cacao nibs",
-    "peanut butter": "almond butter",
-    "milk":"almond milk",
-    "flour":"whole-wheat flour",
-    "beef":"turkey",
-    "iceberg lettuce":"dark leafy greens",
-    "ice cream":"frozen fruit",
-    "cream cheese":"low-fat cottage cheese",
-    "cornstarch": "potato starch",
-    "butter": "coconut oil",
+    'rice':'quinoa',
+    'couscous':'quinoa',
+    'flour tortilla':'corn tortilla',
+    'stevia':'sugar',
+    'bread': 'whole wheat bread',
+    'soda':'tonic water',
+    'french fries':'sweet potato fries',
+    'potato chips':'kale chips',
+    'sour cream':'greek yogurt',
+    'mayonaise':'mustard',
+    'croutons':'nuts',
+    'chocolate chips':'cacao nibs',
+    'peanut butter':'almond butter',
+    'milk':'almond milk',
+    'flour':'whole-wheat flour',
+    'beef':'turkey',
+    'iceberg lettuce':'dark leafy greens',
+    'ice cream':'frozen fruit',
+    'cream cheese':'low-fat cottage cheese',
+    'cornstarch':'potato starch',
+    'butter':'coconut oil',
+    'half-and-half':'skim milk',
 # methods
-    "boil":"steam",
-    "deep-fry":"pan-fry"
+    'boil':'steam',
+    'deep-fry':'pan-fry'
+}
+
+indian_substitutes = {
+    'marinara sauce':'curry sauce',
+    'pesto':'curry',
+    'parmesan cheese':'paneer',
+    'mozzerella':'paneer',
+    'cheddar':'paneer',
+    'provolone':'paneer',
+    'cheese':'paneer',
+    'penne pasta':'rice',
+    'penne':'rice',
+    'macaroni':'rice',
+    'pasta':'rice',
+    'beef':'lamb'
+}
+
+italian_substitutes = {
+    'rice':'pasta',
+    'quinoa':'pasta',
+    'cheddar':'mozzarella',
+    'cream cheese':'mascarpone',
+    'salsa':'marinara sauce',
+    'ice cream':'gelato',
+    'peanut oil':'olive oil',
+    'sesame oil':'olive oil',
+    'beef':'italian sausage',
+    'baked beans':'cannellini beans'
 }
