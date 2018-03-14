@@ -37,6 +37,23 @@ vegetarian = ['seitan',
     'mushroom'
 ]
 
+vegetarian_attribute = {
+    'seitan': {'servingSize': 0.5, 'measurement': 'cup'},
+    'lentil': {'servingSize': 0.5, 'measurement': 'cup'},
+    'tofu': {'servingSize': 150, 'measurement': 'gram'},
+    'mushroom': {'servingSize': 90, 'measurement': 'gram'}
+}
+
+meat_priority = {
+    'chicken broth': 'mushroom broth',
+    'beef broth': 'mushroom broth',
+    'chicken stock': 'mushroom broth',
+    'bone broth': 'mushroom broth',
+    'turkey stock': 'mushroom broth',
+    'beef stock': 'mushroom broth',
+
+}
+
 meat = [
     'bacon',
     'bear',

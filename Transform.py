@@ -9,24 +9,34 @@ def toVegetarian(recipe, vegOption):
 	rec = recipe
 	if vegOption.lower() not in vegetarian:
 		return False
-	for i in range(len(rec.food_list)):
-		if(rec.food_list[i].getName().lower() in meat or rec.food_list[i].getName().lower() in fish):
-			rec.food_list[i].data['name'] = vegOption
-	steps = rec.directions
 	animals = meat
 	animals.extend(fish)
+	steps = rec.directions
+	food_list = rec.food_list
+	serving = rec.serving
+	
+	for i in range(len(food_list)):
+		for animal in animals:
+			if animal in food_list[i].getName():	
+				food_list[i].data['name'] = vegOption
+				food_list[i].data['measurement'] = str(vegetarian_attribute[vegOption]['measurement'])
+				food_list[i].data['quantity'] = str(vegetarian_attribute[vegOption]['servingSize']*serving)
+				food_list[i].data['descriptor'] = 'none'
+				food_list[i].data['preparation'] = 'none'
+	
 	for i in range(len(steps)):
 		step_lower = steps[i].lower()
 		for animal in animals:
 			if animal in step_lower:
 				step_lower = step_lower.replace(animal, vegOption)
 				steps[i]=step_lower
+	rec.food_list = food_list
 	rec.directions = steps
 	return rec
 
 def MakeIndian(recipe):
 	rec = recipe
-	serving = int(rec.serving)
+	serving = rec.serving
 	measurements = ["tablespoon", "tablespoons", "teaspoon", "teaspoon", "teaspoons", "pinch", "dash", "clove", "cloves"]
 	spiceAmount = 0.25*serving
 	first = Ingredient(str(Fraction(spiceAmount)) + " teaspoons ground cumin")
