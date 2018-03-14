@@ -14,12 +14,12 @@ def toVegetarian(recipe, vegOption):
 	steps = rec.directions
 	food_list = rec.food_list
 	serving = rec.serving
-	
+
 	for i in range(len(food_list)):
 		for m in meat_priority.keys():
 			if m in food_list[i].getName():
 				food_list[i].data['name'] = meat_priority[m]
-				
+
 		for animal in animals:
 			if animal in food_list[i].getName():
 				food_list[i].data['name'] = vegOption
@@ -27,7 +27,7 @@ def toVegetarian(recipe, vegOption):
 				food_list[i].data['quantity'] = str(vegetarian_attribute[vegOption]['servingSize']*serving)
 				food_list[i].data['descriptor'] = []
 				food_list[i].data['preparation'] = 'none'
-	
+
 	for i in range(len(steps)):
 		step_lower = steps[i].lower()
 		for m in meat_priority.keys():
@@ -70,7 +70,6 @@ def MakeIndian(recipe):
 			new_list.append(ingredient)
 	recipe.food_list = new_list
 	rec.food_list.extend(indian_list)
-
 	for i in range(len(rec.food_list)):
 		for ingredient in indian_substitutes.keys():
 			if ingredient in rec.food_list[i].getName().lower():
@@ -80,9 +79,11 @@ def MakeIndian(recipe):
 	for i, direction in enumerate(directions):
 		direction_lower = direction.lower()
 		for ingredient in bad_list:
-			if ingredient in direction:
-				direction_lower = direction_lower.replace(ingredient, ingredient + " and spices")
+			ingredient_lower = ingredient.lower()
+			if ingredient_lower in direction:
+				direction_lower = direction_lower.replace(ingredient_lower, ingredient_lower + " and spices")
 				directions[i] = direction_lower
+				break;
 		for ingredient in indian_substitutes.keys():
 			if ingredient in direction_lower:
 				substitute = indian_substitutes[ingredient]
@@ -128,8 +129,10 @@ def MakeItalian(recipe):
 		direction_lower = direction.lower()
 		for ingredient in bad_list:
 			if ingredient in direction:
-				direction_lower = direction_lower.replace(ingredient, ingredient + " and herbs")
+				ingredient_lower = ingredient.lower()
+				direction_lower = direction_lower.replace(ingredient_lower, ingredient_lower + " and herbs")
 				directions[i] = direction_lower
+				break;
 		for ingredient in italian_substitutes.keys():
 			if ingredient in direction_lower:
 				substitute = italian_substitutes[ingredient]
@@ -177,3 +180,6 @@ def toUnhealthy(recipe):
 				steps[i] = step_lower
 	rec.directions = steps
 	return rec
+
+rec = Recipe("https://www.allrecipes.com/recipe/8730/oregano-chicken/")
+print MakeItalian(rec)
