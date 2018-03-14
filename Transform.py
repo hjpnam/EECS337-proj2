@@ -76,6 +76,9 @@ def fromVegetarian(recipe):
 				food_list[i].data['quantity'] = '100'
 				food_list[i].data['descriptor'] = []
 				food_list[i].data['preparation'] = 'none'
+		
+		if 'vegetarian' in food_list[i].data['name']:
+			food_list[i].data['name'] = food_list[i].data['name'].replace('vegetarian', '')
 
 	for i in range(len(steps)):
 		step_lower = steps[i].lower()
@@ -86,7 +89,6 @@ def fromVegetarian(recipe):
 		for m in meat_inv.keys():
 			if m in step_lower:
 				step_lower = step_lower.replace(m, meat_inv[m])
-				
 		for trash in meat_trash:
 			if trash in step_lower:
 				step_lower = step_lower.replace(trash, '')
