@@ -181,6 +181,3 @@ def toUnhealthy(recipe):
 				steps[i] = step_lower
 	rec.directions = steps
 	return rec
-
-rec = Recipe("https://www.allrecipes.com/recipe/8730/oregano-chicken/")
-print MakeItalian(rec)
