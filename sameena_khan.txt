@@ -1,0 +1,4 @@
+I worked on the Find Tools, Make Indian, and Make Italian functions. 
+For Find Tools, I look for common prepositional phrases in the directions and find the tools associated with them. 
+For Make Indian and Make Italian, I remove other spices from the recipes and add in appropriate spices. We then added
+other substitutes, such as substituting pasta for rice when making a recipe Indian.
