@@ -1,1 +1,1 @@
-I worked on getting the methods in the recipe, and the to Healthy and from Healthy transformations. 
+I worked on getting the methods in the recipe, to Healthy and from Healthy transformations, and ingredient replacements in cuisine transformations. 
