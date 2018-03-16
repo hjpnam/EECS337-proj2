@@ -1,0 +1,1 @@
+I created the web scraping part of the Recipe class, the toVegetarian function, and the vocabulary that is necessary for vegetarian transformation. 
