@@ -1,0 +1,1 @@
+Worked on Ingredient.py (ingredient parser) and Vocabulary.py (knowledge base).
